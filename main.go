@@ -155,7 +155,7 @@ func (s *Session) Stop() {
 	}
 
 	if s.state == PausedState {
-		s.setState(PausedState) // Re-send
+		s.setState(PausedState)
 	}
 
 	s.cancel()
