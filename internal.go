@@ -16,6 +16,11 @@ func (iw internalWriter) Write(b []byte) (n int, err error) {
 		return 0, io.EOF
 	}
 
+	err = iw.context.Err()
+	if err != nil {
+		return 0, err
+	}
+
 	n, err = iw.conn.Write(b)
 	if err == nil {
 		iw.position += (20 * time.Millisecond)
